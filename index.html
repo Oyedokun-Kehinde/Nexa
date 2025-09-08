@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexa - Innovative Business Solutions</title>
+
+  <!-- Google Fonts: Raleway + Inter for better readability -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+
+  <style>
+    :root {
+      --primary-green: #00D4AA;
+      --primary-green-dark: #00B894;
+      --primary-green-light: #00E5B8;
+      --dark-bg: #0A0B0D;
+      --dark-secondary: #1A1D23;
+      --dark-card: #252A32;
+      --text-primary: #FFFFFF;
+      --text-secondary: #A0A8B8;
+      --text-muted: #6B7280;
+      --gradient-primary: linear-gradient(135deg, #00D4AA 0%, #00B894 100%);
+      --gradient-dark: linear-gradient(135deg, #0A0B0D 0%, #1A1D23 100%);
+      --shadow-glow: 0 10px 40px rgba(0, 212, 170, 0.15);
+      --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Container adjustments */
+    .container {
+      max-width: 1400px;
+    }
+
+    /* Enhanced Navbar */
+    #navbar {
+      background: rgba(10, 11, 13, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 212, 170, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 1rem 0;
+    }
+
+    .navbar-brand {
+      font-family: 'Raleway', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-link {
+      color: var(--text-secondary) !important;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      margin: 0 0.5rem;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 50%;
+      background: var(--gradient-primary);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover {
+      color: var(--primary-green) !important;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Enhanced Buttons */
+    .btn-primary-custom {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-glow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary-custom::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.6s;
+    }
+
+    .btn-primary-custom:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary-custom:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 50px rgba(0, 212, 170, 0.25);
+    }
+
+    .btn-outline-custom {
+      background: transparent;
+      color: var(--primary-green);
+      border: 2px solid var(--primary-green);
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-custom:hover {
+      background: var(--primary-green);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    /* Hero Section */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--gradient-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.03;
+      background-image: radial-gradient(circle at 20% 80%, var(--primary-green) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, var(--primary-green) 0%, transparent 50%);
+    }
+
+    .hero-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 4.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+
+    .hero-title .gradient-text {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-image {
+      position: relative;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: all 0.4s ease;
+    }
+
+    .hero-image:hover {
+      transform: scale(1.02) rotateY(5deg);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Stats Section */
+    .stats-card {
+      background: var(--dark-card);
+      border-radius: 1.5rem;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 212, 170, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient-primary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .stats-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .stats-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .stats-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .stats-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary-green);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Services Section Enhancement */
+    .service-card {
+      background: var(--dark-card);
+      border-radius: 2rem;
+      padding: 3rem 2rem;
+      height: 100%;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(0, 212, 170, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 212, 170, 0.05) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: var(--shadow-card);
+      border-color: var(--primary-green);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 100px;
+      height: 100px;
+      background: var(--gradient-primary);
+      border-radius: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      font-size: 3rem;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover .service-icon {
+      transform: rotate(5deg) scale(1.1);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .service-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .service-features {
+      list-style: none;
+      padding: 0;
+    }
+
+    .service-features li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .service-features li i {
+      color: var(--primary-green);
+      margin-right: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    /* About Section */
+    #about {
+      background: var(--dark-secondary);
+      position: relative;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .about-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--gradient-primary);
+      padding: 1.5rem 2rem;
+      border-radius: 1rem;
+      color: white;
+      font-weight: 700;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-primary);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1.5rem;
+      color: white;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    /* Section Spacing */
+    section {
+      padding: 8rem 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      section {
+        padding: 4rem 0;
+      }
+      
+      .stats-card {
+        margin-bottom: 2rem;
+      }
+    }
+
+    /* Scroll to Top Button */
+    #scrollToTop {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-primary);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-glow);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    #scrollToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #scrollToTop:hover {
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    /* Custom Cursor */
+    #custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: var(--primary-green);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: all 0.1s ease;
+      opacity: 0.7;
+    }
+
+    /* Animation Classes */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in-up.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Nexa</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary-custom">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="position-relative">
+    <div class="hero-bg-pattern"></div>
+    <div class="container">
+      <div class="row align-items-center min-vh-100">
+        <div class="col-lg-6 pe-lg-5">
+          <h1 class="hero-title fade-in-up">
+            Innovative <span class="gradient-text">Business Solutions</span> for Tomorrow
+          </h1>
+          <p class="lead mb-5 text-secondary fade-in-up" style="animation-delay: 0.2s;">
+            We combine cutting-edge strategy, innovative design, and powerful technology to help your business thrive in the digital-first era.
+          </p>
+          <div class="d-flex flex-wrap gap-3 fade-in-up" style="animation-delay: 0.4s;">
+            <a href="#contact" class="btn btn-primary-custom btn-lg">Get Started Today</a>
+            <a href="#services" class="btn btn-outline-custom btn-lg">Explore Services</a>
+          </div>
+        </div>
+        <div class="col-lg-6 mt-5 mt-lg-0">
+          <div class="hero-image fade-in-up" style="animation-delay: 0.6s;">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Innovative Business Solutions" class="img-fluid" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section id="stats" class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="stats-card fade-in-up">
+            <div class="stats-icon">
+              <i class="bi bi-people-fill"></i>
+            </div>
+            <div class="stats-number">500+</div>
+            <p class="text-secondary">Happy Clients</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="stats-card fade-in-up" style="animation-delay: 0.1s;">
+            <div class="stats-icon">
+              <i class="bi bi-trophy-fill"></i>
+            </div>
+            <div class="stats-number">75+</div>
+            <p class="text-secondary">Awards Won</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="stats-card fade-in-up" style="animation-delay: 0.2s;">
+            <div class="stats-icon">
+              <i class="bi bi-rocket-takeoff-fill"></i>
+            </div>
+            <div class="stats-number">300+</div>
+            <p class="text-secondary">Projects Delivered</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="stats-card fade-in-up" style="animation-delay: 0.3s;">
+            <div class="stats-icon">
+              <i class="bi bi-globe-americas"></i>
+            </div>
+            <div class="stats-number">25+</div>
+            <p class="text-secondary">Countries Reached</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="display-4 fw-bold mb-4 fade-in-up">About <span class="gradient-text">Nexa</span></h2>
+        <p class="lead text-secondary fade-in-up">Empowering businesses through innovation and technology</p>
+      </div>
+
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="about-image fade-in-up">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Our Team" class="img-fluid" />
+            <div class="about-overlay">
+              <i class="bi bi-lightbulb-fill me-2"></i>
+              Innovation First
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h3 class="h2 fw-bold mb-4 fade-in-up">Transforming Ideas Into Digital Excellence</h3>
+          <p class="text-secondary mb-4 fade-in-up">
+            At Nexa, we believe every business has untapped potential. Our expert team combines deep industry knowledge with cutting-edge technology to deliver solutions that drive measurable results and sustainable growth.
+          </p>
+
+          <div class="fade-in-up">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="bi bi-graph-up-arrow"></i>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-2">Strategic Growth</h5>
+                <p class="text-secondary">Data-driven strategies that scale your business to new heights</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="bi bi-code-slash"></i>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-2">Custom Development</h5>
+                <p class="text-secondary">Tailored solutions built with modern frameworks and best practices</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="bi bi-headset"></i>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-2">24/7 Support</h5>
+                <p class="text-secondary">Round-the-clock assistance to keep your business running smoothly</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap gap-3 mt-4 fade-in-up">
+            <a href="#services" class="btn btn-primary-custom">Explore Services</a>
+            <a href="#contact" class="btn btn-outline-custom">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="display-4 fw-bold mb-4 fade-in-up">Our <span class="gradient-text">Services</span></h2>
+        <p class="lead text-secondary fade-in-up">Comprehensive solutions to accelerate your digital transformation</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Web Development -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-card fade-in-up">
+            <div class="service-icon">
+              <i class="bi bi-code-slash"></i>
+            </div>
+            <h4 class="service-title">Web Development</h4>
+            <p class="service-description">
+              Create powerful, responsive websites and web applications that deliver exceptional user experiences and drive business growth.
+            </p>
+            <ul class="service-features">
+              <li><i class="bi bi-check-circle-fill"></i> Custom Website Design</li>
+              <li><i class="bi bi-check-circle-fill"></i> E-Commerce Solutions</li>
+              <li><i class="bi bi-check-circle-fill"></i> Progressive Web Apps</li>
+              <li><i class="bi bi-check-circle-fill"></i> CMS Development</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mobile Development -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-card fade-in-up" style="animation-delay: 0.1s;">
+            <div class="service-icon">
+              <i class="bi bi-phone"></i>
+            </div>
+            <h4 class="service-title">Mobile Development</h4>
+            <p class="service-description">
+              Build native and cross-platform mobile applications that engage users and provide seamless experiences across all devices.
+            </p>
+            <ul class="service-features">
+              <li><i class="bi bi-check-circle-fill"></i> iOS & Android Apps</li>
+              <li><i class="bi bi-check-circle-fill"></i> Cross-Platform Solutions</li>
+              <li><i class="bi bi-check-circle-fill"></i> UI/UX Design</li>
+              <li><i class="bi bi-check-circle-fill"></i> App Store Optimization</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Digital Marketing -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-card fade-in-up" style="animation-delay: 0.2s;">
+            <div class="service-icon">
+              <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <h4 class="service-title">Digital Marketing</h4>
+            <p class="service-description">
+              Amplify your brand reach with data-driven marketing strategies that convert visitors into customers and boost ROI.
+            </p>
+            <ul class="service-features">
+              <li><i class="bi bi-check-circle-fill"></i> SEO & SEM</li>
+              <li><i class="bi bi-check-circle-fill"></i> Social Media Marketing</li>
+              <li><i class="bi bi-check-circle-fill"></i> Content Marketing</li>
+              <li><i class="bi bi-check-circle-fill"></i> PPC Advertising</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Cloud Solutions -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-card fade-in-up" style="animation-delay: 0.3s;">
+            <div class="service-icon">
+              <i class="bi bi-cloud-check"></i>
+            </div>
+            <h4 class="service-title">Cloud Solutions</h4>
+            <p class="service-description">
+              Modernize your infrastructure with scalable cloud solutions that improve performance, security, and cost-effectiveness.
+            </p>
+            <ul class="service-features">
+              <li><i class="bi bi-check-circle-fill"></i> Cloud Migration</li>
+              <li><i class="bi bi-check-circle-fill"></i> DevOps & CI/CD</li>
+              <li><i class="bi bi-check-circle-fill"></i> Server Management</li>
+              <li><i class="bi bi-check-circle-fill"></i> Backup & Recovery</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Cybersecurity -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-card fade-in-up" style="animation-delay: 0.4s;">
+            <div class="service-icon">
+              <i class="bi bi-shield-check"></i>
+            </div>
+            <h4 class="service-title">Cybersecurity</h4>
+            <p class="service-description">
+              Protect your digital assets with comprehensive security solutions that prevent threats and ensure compliance.
+            </p>
+            <ul class="service-features">
+              <li><i class="bi bi-check-circle-fill"></i> Security Audits</li>
+              <li><i class="bi bi-check-circle-fill"></i> Threat Detection</li>
+              <li><i class="bi bi-check-circle-fill"></i> Data Protection</li>
+              <li><i class="bi bi-check-circle-fill"></i> Compliance Management</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- AI & Analytics -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-card fade-in-up" style="animation-delay: 0.5s;">
+            <div class="service-icon">
+              <i class="bi bi-robot"></i>
+            </div>
+            <h4 class="service-title">AI & Analytics</h4>
+            <p class="service-description">
+              Harness the power of artificial intelligence and data analytics to make informed decisions and automate processes.
+            </p>
+            <ul class="service-features">
+              <li><i class="bi bi-check-circle-fill"></i> Machine Learning</li>
+              <li><i class="bi bi-check-circle-fill"></i> Business Intelligence</li>
+              <li><i class="bi bi-check-circle-fill"></i> Process Automation</li>
+              <li><i class="bi bi-check-circle-fill"></i> Predictive Analytics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" style="background: var(--dark-secondary);">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="display-4 fw-bold mb-4 fade-in-up">Get In <span class="gradient-text">Touch</span></h2>
+        <p class="lead text-secondary fade-in-up">Ready to transform your business? Let's start the conversation.</p>
+      </div>
+
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <div class="fade-in-up">
+            <h4 class="fw-bold mb-4">Send us a message</h4>
+            <form class="contact-form">
+              <div class="mb-4">
+                <input type="text" class="form-control form-control-lg bg-dark border-0 text-white" placeholder="Your Name" required>
+              </div>
+              <div class="mb-4">
+                <input type="email" class="form-control form-control-lg bg-dark border-0 text-white" placeholder="Your Email" required>
+              </div>
+              <div class="mb-4">
+                <textarea class="form-control form-control-lg bg-dark border-0 text-white" rows="6" placeholder="Your Message" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary-custom btn-lg w-100">Send Message</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="fade-in-up">
+            <h4 class="fw-bold mb-4">Contact Information</h4>
+            
+            <div class="contact-info-item d-flex align-items-center mb-4">
+              <div class="contact-icon me-4">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold mb-1">Our Office</h6>
+                <p class="text-secondary mb-0">123 Innovation Street, Tech Hub District<br>San Francisco, CA 94105</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item d-flex align-items-center mb-4">
+              <div class="contact-icon me-4">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold mb-1">Phone Number</h6>
+                <p class="text-secondary mb-0">+1 (555) 123-4567</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item d-flex align-items-center mb-4">
+              <div class="contact-icon me-4">
+                <i class="bi bi-envelope-fill"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold mb-1">Email Address</h6>
+                <p class="text-secondary mb-0">hello@nexasolutions.com</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item d-flex align-items-center mb-5">
+              <div class="contact-icon me-4">
+                <i class="bi bi-clock-fill"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold mb-1">Business Hours</h6>
+                <p class="text-secondary mb-0">Mon - Fri: 9:00 AM - 6:00 PM<br>Sat - Sun: 10:00 AM - 4:00 PM</p>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <h6 class="fw-bold mb-3">Follow Us</h6>
+              <div class="d-flex gap-3">
+                <a href="#" class="social-link">
+                  <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="#" class="social-link">
+                  <i class="bi bi-twitter"></i>
+                </a>
+                <a href="#" class="social-link">
+                  <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="social-link">
+                  <i class="bi bi-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5" style="background: var(--dark-bg); border-top: 1px solid rgba(0, 212, 170, 0.1);">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="navbar-brand h3 mb-4">Nexa</div>
+          <p class="text-secondary mb-4">
+            Empowering businesses with innovative solutions that drive growth and success in the digital age.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#" class="social-link">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="bi bi-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="bi bi-github"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6 class="fw-bold mb-3">Services</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Web Development</a></li>
+            <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Mobile Apps</a></li>
+            <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Digital Marketing</a></li>
+            <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Cloud Solutions</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6 class="fw-bold mb-3">Company</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#about" class="text-secondary text-decoration-none">About Us</a></li>
+            <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Careers</a></li>
+            <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Blog</a></li>
+            <li class="mb-2"><a href="#contact" class="text-secondary text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="fw-bold mb-3">Newsletter</h6>
+          <p class="text-secondary mb-3">Stay updated with our latest news and offers.</p>
+          <form class="d-flex gap-2">
+            <input type="email" class="form-control bg-dark border-0 text-white" placeholder="Enter your email">
+            <button class="btn btn-primary-custom" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4" style="border-color: rgba(0, 212, 170, 0.1);">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="text-secondary mb-0">&copy; 2025 Nexa Solutions. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#" class="text-secondary text-decoration-none me-3">Privacy Policy</a>
+          <a href="#" class="text-secondary text-decoration-none me-3">Terms of Service</a>
+          <a href="#" class="text-secondary text-decoration-none">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTop">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Custom Cursor -->
+  <div id="custom-cursor"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Enhanced JavaScript with improved animations and interactions
+
+    // Scroll to Top Button
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Custom Cursor
+    const cursor = document.getElementById('custom-cursor');
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // Smooth cursor animation
+    function animateCursor() {
+      const speed = 0.2;
+      cursorX += (mouseX - cursorX) * speed;
+      cursorY += (mouseY - cursorY) * speed;
+      
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top = cursorY + 'px';
+      
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.addEventListener('mousedown', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(0.5)';
+    });
+
+    document.addEventListener('mouseup', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+
+    // Hover effects for interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .service-card, .stats-card');
+    
+    interactiveElements.forEach(element => {
+      element.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        cursor.style.backgroundColor = 'rgba(0, 212, 170, 0.3)';
+      });
+      
+      element.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursor.style.backgroundColor = 'rgba(0, 212, 170, 0.7)';
+      });
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in-up elements
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 100) {
+        navbar.style.background = 'rgba(10, 11, 13, 0.98)';
+        navbar.style.backdropFilter = 'blur(20px)';
+      } else {
+        navbar.style.background = 'rgba(10, 11, 13, 0.95)';
+        navbar.style.backdropFilter = 'blur(20px)';
+      }
+      
+      // Hide/show navbar on scroll
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+      
+      lastScrollY = currentScrollY;
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offsetTop = target.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Form submission handling
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Simple form validation and submission feedback
+      const formData = new FormData(this);
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      
+      submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Sending...';
+      submitBtn.disabled = true;
+      
+      // Simulate form submission
+      setTimeout(() => {
+        submitBtn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Message Sent!';
+        submitBtn.style.background = '#10B981';
+        
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+          this.reset();
+        }, 2000);
+      }, 1500);
+    });
+
+    // Service card interactions
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.borderColor = 'var(--primary-green)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.borderColor = 'rgba(0, 212, 170, 0.1)';
+      });
+    });
+
+    // Statistics counter animation
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stats-number');
+      
+      counters.forEach(counter => {
+        const target = parseInt(counter.textContent.replace(/\D/g, ''));
+        const suffix = counter.textContent.replace(/[0-9]/g, '');
+        let current = 0;
+        const increment = target / 100;
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            counter.textContent = target + suffix;
+            clearInterval(timer);
+          } else {
+            counter.textContent = Math.ceil(current) + suffix;
+          }
+        }, 20);
+      });
+    }
+
+    // Trigger counter animation when stats section is visible
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.getElementById('stats');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+
+    // Add loading animation
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.5s ease';
+      
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+  </script>
+
+  <style>
+    /* Additional CSS for enhanced interactions */
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-primary);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.3rem;
+    }
+
+    .contact-info-item {
+      transition: all 0.3s ease;
+    }
+
+    .contact-info-item:hover {
+      transform: translateX(10px);
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      background: var(--dark-card);
+      border: 1px solid rgba(0, 212, 170, 0.2);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .social-link:hover {
+      background: var(--gradient-primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .form-control {
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-green);
+      box-shadow: 0 0 0 0.2rem rgba(0, 212, 170, 0.25);
+    }
+
+    .navbar {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Loading state styles */
+    body {
+      transition: opacity 0.5s ease;
+    }
+
+    /* Mobile enhancements */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .service-card {
+        padding: 2rem 1.5rem;
+      }
+      
+      .stats-card {
+        padding: 2rem 1rem;
+      }
+      
+      .contact-info-item:hover {
+        transform: none;
+      }
+    }
+  </style>
+</body>
+</html>
