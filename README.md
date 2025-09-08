@@ -239,4 +239,4 @@ If you have any questions or need help with customization:
 
 ⭐ **Star this repository if it helped you build an amazing website!**
 
-Made with ❤️ by [Your Name](https://github.com/Oyedokun-Kehinde)
+Made with ❤️ by [Oyedokun Kehinde ](https://github.com/Oyedokun-Kehinde)
